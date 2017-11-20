@@ -1,6 +1,9 @@
 package com.lib.lib.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,38 +17,70 @@ public class Person implements Serializable{
     @Column(name = "ID")
     private long id;
 
+    @Column(name = "password")
+    @Length(min = 5, message = "*Your password must have at least 5 characters")
+    @NotEmpty(message = "*Please provide your password")
+    @Transient
+    private String password;
+
+
     @Column(name = "PERSON_NAME")
-    private String person_name;
+    private String name;
 
     @Column(name = "PERSON_INFO")
-    private String person_info;
+    private String info;
 
+    @Column(name = "PERSON_MAIL")
+    private String mail;
 
     @OneToMany(mappedBy = "person")
     List<Book> books = new ArrayList<>();
 
-
-    public long getPerson_id() {
+    public long getId() {
         return id;
     }
 
-    public void setPerson_id(long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getPerson_name() {
-        return person_name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPerson_name(String person_name) {
-        this.person_name = person_name;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getPerson_info() {
-        return person_info;
+    public String getName() {
+        return name;
     }
 
-    public void setPerson_info(String person_info) {
-        this.person_info = person_info;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

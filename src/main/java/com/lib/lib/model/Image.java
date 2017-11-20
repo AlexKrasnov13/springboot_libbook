@@ -17,51 +17,56 @@ public class Image implements Serializable {
 
     @Type(type="org.hibernate.type.BinaryType")
     @Column(name = "IMAGE_DATA")
-    private byte[] image_data;
+    private byte[] data;
 
     @Column(name = "IMAGE_LENGTH")
-    private Integer image_length;
+    private Integer length;
 
     @Column(name = "IMAGE_TYPE")
-    private String image_type;
+    private String type;
 
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="BOOK_ID")
     private Book book;
 
-
-
-    public long getImage_id() {
+    public long getId() {
         return id;
     }
 
-    public void setImage_id(long image_id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public byte[] getImage_data() {
-        return image_data;
+    public byte[] getData() {
+        return data;
     }
 
-    public void setImage_data(byte[] image_data) {
-        this.image_data = image_data;
+    public void setData(byte[] data) {
+        this.data = data;
     }
 
-    public Integer getImage_length() {
-        return image_length;
+    public Integer getLength() {
+        return length;
     }
 
-    public void setImage_length(Integer image_length) {
-        this.image_length = image_length;
+    public void setLength(Integer length) {
+        this.length = length;
     }
 
-    public String getImage_type() {
-        return image_type;
+    public String getType() {
+        return type;
     }
 
-    public void setImage_type(String image_type) {
-        this.image_type = image_type;
+    public void setType(String type) {
+        this.type = type;
     }
 
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 }

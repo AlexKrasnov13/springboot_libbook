@@ -1,6 +1,5 @@
 package com.lib.lib.repository;
 
-import com.lib.lib.model.Book;
 import com.lib.lib.model.Person;
 import org.springframework.data.repository.CrudRepository;
 
@@ -10,4 +9,5 @@ public interface PersonRepository extends CrudRepository<Person,Long> {
     List<Person> findAll();
     Person save (Person person);
     Person getById (long id);
+    Person getByMail (String mail);
 }
